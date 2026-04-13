@@ -114,8 +114,10 @@ for i in range(len(temps_c)):
 plt.title("(a) Particle Concentration ($N_{total}$) Decay (Monodisperse)", fontsize=14, fontweight='bold')
 plt.xlabel("Time Progression (Seconds)", fontsize=12)
 plt.ylabel("Total Particle Concentration ($particles/m^3$)", fontsize=12)
-plt.grid(True, linestyle='--', alpha=0.6)
-plt.legend(title="Temperature", fontsize=10, bbox_to_anchor=(1.05, 1), loc='upper left')
+ax = plt.gca()
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+plt.legend(title="Temperature", fontsize=10, loc='upper right')
 plt.tight_layout()
 
 plt.savefig('coagulation_N_total_decay_mono_corrected.png', dpi=300)

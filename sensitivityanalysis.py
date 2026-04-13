@@ -47,6 +47,7 @@ ax1.tick_params(axis='both', which='minor', labelsize=F_TICKS)
 ax1.legend(title='Water Temp.', fontsize=F_LEGEND, title_fontsize=F_LEGEND, loc='upper left', framealpha=0.8)
 
 
+
 axins.set_xlim(80, 120)
 axins.set_ylim(0.5, 2.0)
 axins.set_xscale('linear')
@@ -96,9 +97,13 @@ ax2.set_yscale('log')
 ax2.tick_params(axis='both', which='major', labelsize=F_TICKS)
 ax2.tick_params(axis='both', which='minor', labelsize=F_TICKS)
 ax2.legend(title='Fractal Dim. ($d_f$)', fontsize=F_LEGEND, title_fontsize=F_LEGEND, loc='upper left', framealpha=0.8)
-
+ax2.set_ylim(ax1.get_ylim())
 
 plt.tight_layout()
+ax = plt.gca()
+for ax in [ax1, ax2, axins]:
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
 fig.subplots_adjust(hspace=0.25)
 output_filename = 'Settling_Velocity_Stacked_With_Inset_Adjusted.png'
 plt.savefig(output_filename, dpi=300)
